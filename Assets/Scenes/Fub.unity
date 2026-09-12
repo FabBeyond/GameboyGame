@@ -2068,6 +2068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9dc0d62231b9448b5ce7fa4f0f427e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoatController
+  speed: 0
 --- !u!1 &1737273309
 GameObject:
   m_ObjectHideFlags: 0
