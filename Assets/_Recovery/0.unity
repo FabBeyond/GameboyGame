@@ -236,8 +236,8 @@ Transform:
   m_GameObject: {fileID: 1005696316}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5459, y: 0, z: 0}
-  m_LocalScale: {x: 1.5459, y: 1, z: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 22413836}
@@ -440,9 +440,7 @@ MonoBehaviour:
   atkPivot: {fileID: 22413835}
   windupSpeed: 0.1
   atkCd: 0.3
-  atkDamage: 5
-  kbDistance: 5
-  kbSpeed: 15
+  atkDamage: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -577,7 +575,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 9.833333
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
