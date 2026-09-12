@@ -19,7 +19,8 @@ public class BoatController : MonoBehaviour
 
     private void Update()
     {
-        Vector2 movementInput = input.Player.Movement.ReadValue<Vector2>().normalized * speed * Time.deltaTime;
+        Vector2 movementInput = input.Player.Movement.ReadValue<Vector2>().normalized;
+        movementInput = ControlLimiter.SnapTo8Dir(movementInput) * speed * Time.deltaTime;
         transform.position += new Vector3(movementInput.x, movementInput.y, 0);
     }
 }
