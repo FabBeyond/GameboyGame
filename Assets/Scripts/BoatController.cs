@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class BoatController : MonoBehaviour
 {
+    public static BoatController instance;
     public InputActions input;
     public float speed;
 
     private void OnEnable()
     {
+        instance = this;
         input = new InputActions();
         input.Enable();
     }
