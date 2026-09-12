@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2269669021622280053}
   - component: {fileID: 1742779254233654060}
+  - component: {fileID: 4119729765686407390}
   m_Layer: 0
   m_Name: Selector
   m_TagString: Untagged
@@ -91,3 +92,15 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &4119729765686407390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506113867156107679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a77970578b6f5a40b07cf96bbca9407, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoatPlaceSelector
