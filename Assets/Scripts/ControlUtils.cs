@@ -13,4 +13,9 @@ public class ControlUtils
         float rad = angle * Mathf.Deg2Rad;
         return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
     }
+    public static Vector2 DeadzoneCheck(Vector2 input)
+    {
+        if (input.magnitude < PlayerData.Instance.deadzone) return Vector2.zero;
+        return input;
+    }
 }

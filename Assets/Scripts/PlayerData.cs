@@ -1,38 +1,43 @@
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
+public struct ShipTiles
+{
+    public string tileId;
+    public GameObject prefab;
+}
+
 public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance;
-    public List<GameObject> shipPrefabs = new List<GameObject>();
+    public List<ShipTiles> shipPrefabs;
+    Dictionary<string, GameObject> lookup;
+    public List<ShipPartBase> shipParts = new List<ShipPartBase>();
+    public float deadzone = 0.5f;
+    public bool boatCanMove = true;
+    public bool boatBuildMode = false;
+    public string boatTiles; // starting config -----bb--cc--bb-----
+    public Dictionary<char, string> alphabetToID = new Dictionary<char, string>()
+    {
+        {'a', "basic"},
+        {'b', "sail"}
+    };
 
-    private void Start()
+    private void Awake()
     {
         Instance = this;
         DontDestroyOnLoad(this);
-        SetupBoat();
+        lookup = new Dictionary<string, GameObject>();
+
+        foreach (var entry in shipPrefabs)
+            lookup[entry.tileId] = entry.prefab;
     }
 
-    void SetupBoat()
+    public GameObject GetTile(string tileId)
     {
-        for (int i = 0; i < 5; i++)
-        {
-            for (int j = 0; j < 4; j++)
-            {
-                GameObject shipPart = Instantiate(shipPrefabs[0]);
-                shipPart.transform.parent = BoatController.instance.transform;
-
-                ShipPartBase shipPartBase = shipPart.GetComponent<ShipPartBase>();
-                shipPartBase.position = new Vector2(j, i);
-                if (!(j == 0 || j == 3 || i == 0 || i == 4))
-                {
-                    shipPartBase.active = true;
-                }
-                shipParts.Add(shipPartBase);
-            }
-        }
+        return lookup.TryGetValue(tileId, out GameObject tile) ? tile : null;
     }
-
-    public List<ShipPartBase> shipParts = new List<ShipPartBase>();
 }

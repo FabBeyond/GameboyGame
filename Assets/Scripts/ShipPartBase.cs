@@ -18,6 +18,6 @@ public class ShipPartBase : MonoBehaviour
     }
     private void Update()
     {
-        sr.enabled = active;
+        //sr.enabled = active;
     }
 }
