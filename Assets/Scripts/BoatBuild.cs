@@ -49,7 +49,7 @@ public class BoatBuild : MonoBehaviour
     public void SelectTile(string id)
     {
         currentMode = "tilePlacement";
-        uiSelector.GetComponent<UISelector>().Setup(placementSelectionStart, Vector2.one);
+        uiSelector.GetComponent<UISelector>().Setup(placementSelectionStart, Vector2.one*2);
     }
     
     void SetupBuildGrid()

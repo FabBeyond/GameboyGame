@@ -898,11 +898,13 @@ MonoBehaviour:
   shipPrefabs:
   - tileId: basic
     prefab: {fileID: 6572454212955033558, guid: b64180a63b0103048b20f500e431f1ac, type: 3}
+  - tileId: sail
+    prefab: {fileID: 6572454212955033558, guid: 41d937609f79e4549ad8a7d7f9e3c050, type: 3}
   shipParts: []
   deadzone: 0.15
   boatCanMove: 1
   boatBuildMode: 0
-  boatTiles: 00000000000000000000
+  boatTiles: -----aa--bb--aa-----
 --- !u!4 &670530923
 Transform:
   m_ObjectHideFlags: 0

@@ -12,21 +12,21 @@ public class GameManager : MonoBehaviour
     }
     void SetupBoat()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < pd.boatTiles.Length; i++)
         {
-            for (int j = 0; j < 4; j++)
-            {
-                GameObject shipPart = Instantiate(pd.GetTile("basic"));
-                shipPart.transform.parent = BoatController.instance.transform;
+            int x = i % 4;
+            int y = i / 4;
 
-                ShipPartBase shipPartBase = shipPart.GetComponent<ShipPartBase>();
-                shipPartBase.position = new Vector2(j, i);
-                if (!(j == 0 || j == 3 || i == 0 || i == 4))
-                {
-                    shipPartBase.active = true;
-                }
-                pd.shipParts.Add(shipPartBase);
-            }
+            if (pd.boatTiles[i] == '-') continue;
+
+            GameObject tile = pd.GetTile(pd.alphabetToID[pd.boatTiles[i]]);
+            GameObject shipPart = Instantiate(tile);
+            shipPart.transform.parent = BoatController.instance.transform;
+
+            ShipPartBase shipPartBase = shipPart.GetComponent<ShipPartBase>();
+            shipPartBase.position = new Vector2(x, y);
+
+            pd.shipParts.Add(shipPartBase);
         }
     }
     public void SwitchBoatBuild()

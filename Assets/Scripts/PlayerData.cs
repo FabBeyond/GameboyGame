@@ -19,7 +19,12 @@ public class PlayerData : MonoBehaviour
     public float deadzone = 0.5f;
     public bool boatCanMove = true;
     public bool boatBuildMode = false;
-    public string boatTiles = "00000110011001100000";
+    public string boatTiles; // starting config -----bb--cc--bb-----
+    public Dictionary<char, string> alphabetToID = new Dictionary<char, string>()
+    {
+        {'a', "basic"},
+        {'b', "sail"}
+    };
 
     private void Awake()
     {
