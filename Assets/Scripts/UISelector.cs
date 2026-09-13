@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class BoatPlaceSelector : MonoBehaviour
+public class UISelector : MonoBehaviour
 {
     InputActions input;
     bool resetInput;
+    public List<UIObject> uiObjects = new List<UIObject>();
     private void Start()
     {
         input = BoatController.instance.input;

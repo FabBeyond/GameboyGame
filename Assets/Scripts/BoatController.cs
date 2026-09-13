@@ -19,8 +19,18 @@ public class BoatController : MonoBehaviour
 
     private void Update()
     {
+        if (!PlayerData.Instance.boatCanMove) return;
+
         Vector2 movementInput = input.Player.Movement.ReadValue<Vector2>();
         movementInput = ControlUtils.SnapToDir(ControlUtils.DeadzoneCheck(movementInput), 8).normalized * speed * Time.deltaTime;
         transform.position += new Vector3(movementInput.x, movementInput.y, 0);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Building"))
+        {
+            GameManager.instance.SwitchBoatBuild();
+        }
     }
 }
