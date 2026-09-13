@@ -5,5 +5,6 @@ using UnityEngine.Events;
 public class UIObject : MonoBehaviour
 {
     public List<UIObject> neighbours = new List<UIObject>();
-    public UnityEvent onClick;
+    public UnityEvent<string> onClick = new UnityEvent<string>();
+    public string arg;
 }

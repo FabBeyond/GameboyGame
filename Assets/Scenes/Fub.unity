@@ -731,9 +731,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   shipPrefabs:
-  - tileId: basic
+  - tileId: 97
     prefab: {fileID: 6572454212955033558, guid: b64180a63b0103048b20f500e431f1ac, type: 3}
-  - tileId: sail
+  - tileId: 98
     prefab: {fileID: 6572454212955033558, guid: 41d937609f79e4549ad8a7d7f9e3c050, type: 3}
   shipParts: []
   deadzone: 0.15
@@ -830,9 +830,10 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: basic
+          m_StringArgument: a
           m_BoolArgument: 0
         m_CallState: 2
+  arg: 
 --- !u!212 &724334800
 SpriteRenderer:
   serializedVersion: 2
@@ -970,9 +971,10 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: sail
+          m_StringArgument: b
           m_BoolArgument: 0
         m_CallState: 2
+  arg: 
 --- !u!212 &962078697
 SpriteRenderer:
   serializedVersion: 2
@@ -1136,6 +1138,7 @@ MonoBehaviour:
   uiSelector: {fileID: 506113867156107679, guid: 175a099c198ce1048aef9944c2209a86, type: 3}
   rightSide: {fileID: 106576266}
   uiGridObjects: {fileID: 876418707}
+  selectedTile: 
 --- !u!1 &1419662218
 GameObject:
   m_ObjectHideFlags: 0

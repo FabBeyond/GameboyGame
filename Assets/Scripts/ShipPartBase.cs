@@ -16,8 +16,4 @@ public class ShipPartBase : MonoBehaviour
         Vector2 basePosition = new Vector2(-1.5f, 2);
         transform.localPosition = new Vector3(basePosition.x+position.x, basePosition.y-position.y, 0);
     }
-    private void Update()
-    {
-        //sr.enabled = active;
-    }
 }

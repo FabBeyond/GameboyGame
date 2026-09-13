@@ -21,7 +21,7 @@ public class UISelector : MonoBehaviour
         else if (input.UI.Down.WasPressedThisFrame()) MoveSelection(selection.neighbours[2]);
         else if (input.UI.Left.WasPressedThisFrame()) MoveSelection(selection.neighbours[3]);
 
-        if (input.UI.Click.WasPressedThisFrame()) selection.onClick.Invoke();
+        if (input.UI.Click.WasPressedThisFrame()) selection.onClick.Invoke(selection.arg);
     }
     public void Setup(UIObject startSelection, Vector2 size)
     {

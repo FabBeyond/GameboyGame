@@ -19,15 +19,30 @@ public class GameManager : MonoBehaviour
 
             if (pd.boatTiles[i] == '-') continue;
 
-            GameObject tile = pd.GetTile(pd.alphabetToID[pd.boatTiles[i]]);
-            GameObject shipPart = Instantiate(tile);
-            shipPart.transform.parent = BoatController.instance.transform;
-
-            ShipPartBase shipPartBase = shipPart.GetComponent<ShipPartBase>();
-            shipPartBase.position = new Vector2(x, y);
-
-            pd.shipParts.Add(shipPartBase);
+            SetTile(pd.boatTiles[i], x, y);
         }
+    }
+    public void SetTile(char id, int x, int y, float scale = 1)
+    {
+        int idx = x + y * 4;
+        if (pd.boatTiles[idx] != '-')
+        {
+            char[] charArr = pd.boatTiles.ToCharArray();
+            charArr[idx] = '-';
+            pd.boatTiles = new string(charArr);
+
+            Destroy(pd.shipParts[idx]);
+        }
+
+        GameObject tile = pd.GetTile(id);
+        GameObject shipPart = Instantiate(tile);
+        shipPart.transform.parent = BoatController.instance.transform;
+        shipPart.transform.localScale = new Vector3(1, 1, 1);
+
+        ShipPartBase shipPartBase = shipPart.GetComponent<ShipPartBase>();
+        shipPartBase.position = new Vector2(x, y);
+
+        pd.shipParts[idx] = shipPartBase;
     }
     public void SwitchBoatBuild()
     {

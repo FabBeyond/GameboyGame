@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BoatBuild : MonoBehaviour
 {
@@ -53,6 +55,19 @@ public class BoatBuild : MonoBehaviour
         selectedTile = id;
         uiSelector.GetComponent<UISelector>().Setup(placementSelectionStart, Vector2.one*2);
     }
+    public void PlaceTile(string position)
+    {
+        string[] pos = position.Split("|");
+        int x = int.Parse(pos[0]);
+        int y = int.Parse(pos[1]);
+        int idx = x + y * 4;
+
+        char[] charArr = PlayerData.Instance.boatTiles.ToCharArray();
+        charArr[idx] = char.Parse(selectedTile);
+        PlayerData.Instance.boatTiles = new string(charArr);
+
+        GameManager.instance.SetTile(char.Parse(selectedTile), x, y, scale);
+    }
     
     void SetupBuildGrid()
     {
@@ -68,6 +83,10 @@ public class BoatBuild : MonoBehaviour
                 shipPart.transform.position = new Vector2(startingPos.x + (j * 2), startingPos.y - (i * 2));
 
                 UIObject uiObject = shipPart.AddComponent<UIObject>();
+                uiObject.onClick = new UnityEvent<string>();
+                uiObject.onClick.AddListener(PlaceTile);
+                uiObject.arg = $"{j}|{i}";
+
                 placementPositions[i].Add(uiObject);
             }
         }
