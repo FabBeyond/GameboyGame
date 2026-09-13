@@ -90,7 +90,6 @@ public class BoatBuild : MonoBehaviour
                         uiObject.neighbours.Add(null);
                         continue;
                     }
-                    print(newX + " | " + newY);
                     uiObject.neighbours.Add(placementPositions[newX][newY]);
                 }
             }
