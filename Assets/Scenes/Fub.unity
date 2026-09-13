@@ -904,7 +904,7 @@ MonoBehaviour:
   deadzone: 0.15
   boatCanMove: 1
   boatBuildMode: 0
-  boatTiles: -----aa--bb--aa-----
+  boatTiles: b----aa--bb--aa-----
 --- !u!4 &670530923
 Transform:
   m_ObjectHideFlags: 0
