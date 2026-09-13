@@ -23,11 +23,12 @@ public class UISelector : MonoBehaviour
 
         if (input.UI.Click.WasPressedThisFrame()) selection.onClick.Invoke();
     }
-    public void Setup(UIObject startSelection)
+    public void Setup(UIObject startSelection, Vector2 size)
     {
         setup = true;
         selection = startSelection;
         transform.position = selection.transform.position;
+        transform.localScale = size;
     }
     void MoveSelection(UIObject newSelection)
     {

@@ -4,13 +4,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public PlayerData pd;
-    public UIObject smh;
     private void Start()
     {
         instance = this;
         pd = PlayerData.Instance;
         SetupBoat();
-        GameObject.FindFirstObjectByType<UISelector>().Setup(smh);
     }
     void SetupBoat()
     {
@@ -18,7 +16,7 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < 4; j++)
             {
-                GameObject shipPart = Instantiate(pd.shipPrefabs[0]);
+                GameObject shipPart = Instantiate(pd.GetTile("basic"));
                 shipPart.transform.parent = BoatController.instance.transform;
 
                 ShipPartBase shipPartBase = shipPart.GetComponent<ShipPartBase>();
@@ -33,9 +31,19 @@ public class GameManager : MonoBehaviour
     }
     public void SwitchBoatBuild()
     {
-        pd.boatCanMove = false;
-        pd.boatBuildMode = true;
+        if (!pd.boatBuildMode)
+        {
+            pd.boatCanMove = false;
+            pd.boatBuildMode = true;
 
-        BoatBuild.instance.StartBoatBuild();
+            BoatBuild.instance.StartBoatBuild();
+        }
+        else
+        {
+            pd.boatCanMove = true;
+            pd.boatBuildMode = false;
+
+            BoatBuild.instance.EndBoatBuild();
+        }
     }
 }

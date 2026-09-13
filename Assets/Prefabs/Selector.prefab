@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 999
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.5943396, g: 0.27754536, b: 0.27754536, a: 0.13333334}
@@ -104,3 +104,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a77970578b6f5a40b07cf96bbca9407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoatPlaceSelector
+  selection: {fileID: 0}
+  setup: 0

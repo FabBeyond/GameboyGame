@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b905ae50ce6768a44b800d86944505e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipPartBase
-  tileID: 
+  tileID: basic
   position: {x: 0, y: 0}
   tileSprite: {fileID: 0}
   active: 0
