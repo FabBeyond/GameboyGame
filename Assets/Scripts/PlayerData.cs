@@ -36,4 +36,10 @@ public class PlayerData : MonoBehaviour
     {
         return lookup.TryGetValue(tileId, out GameObject tile) ? tile : null;
     }
+    public void SetBoatTile(int idx, char tileId)
+    {
+        char[] charArr = boatTiles.ToCharArray();
+        charArr[idx] = tileId;
+        boatTiles = new string(charArr);
+    }
 }

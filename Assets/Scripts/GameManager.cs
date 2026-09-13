@@ -27,11 +27,9 @@ public class GameManager : MonoBehaviour
         int idx = x + y * 4;
         if (pd.boatTiles[idx] != '-')
         {
-            char[] charArr = pd.boatTiles.ToCharArray();
-            charArr[idx] = '-';
-            pd.boatTiles = new string(charArr);
+            pd.SetBoatTile(idx, '-');
 
-            Destroy(pd.shipParts[idx]);
+            Destroy(pd.shipParts[idx]?.gameObject);
         }
 
         GameObject tile = pd.GetTile(id);
@@ -43,6 +41,7 @@ public class GameManager : MonoBehaviour
         shipPartBase.position = new Vector2(x, y);
 
         pd.shipParts[idx] = shipPartBase;
+        pd.SetBoatTile(idx, id);
     }
     public void SwitchBoatBuild()
     {

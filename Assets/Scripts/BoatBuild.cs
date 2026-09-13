@@ -62,10 +62,6 @@ public class BoatBuild : MonoBehaviour
         int y = int.Parse(pos[1]);
         int idx = x + y * 4;
 
-        char[] charArr = PlayerData.Instance.boatTiles.ToCharArray();
-        charArr[idx] = char.Parse(selectedTile);
-        PlayerData.Instance.boatTiles = new string(charArr);
-
         GameManager.instance.SetTile(char.Parse(selectedTile), x, y, scale);
     }
     
