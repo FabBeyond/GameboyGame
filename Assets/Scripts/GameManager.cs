@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
             pd.boatBuildMode = false;
 
             BoatBuild.instance.EndBoatBuild();
+            BoatController.instance.ResetFromBuild();
         }
     }
 }

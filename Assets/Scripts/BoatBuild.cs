@@ -14,7 +14,8 @@ public class BoatBuild : MonoBehaviour
     public string currentMode;
     public GameObject uiSelector;
     public GameObject rightSide;
-    public GameObject gridObjects;
+    public GameObject uiGridObjects;
+    public string selectedTile;
     List<List<UIObject>> placementPositions = new List<List<UIObject>>();
     List<(int, int)> neighbourOffset = new List<(int, int)>()
     {
@@ -49,21 +50,19 @@ public class BoatBuild : MonoBehaviour
     public void SelectTile(string id)
     {
         currentMode = "tilePlacement";
+        selectedTile = id;
         uiSelector.GetComponent<UISelector>().Setup(placementSelectionStart, Vector2.one*2);
     }
     
     void SetupBuildGrid()
     {
-        gridObjects = new GameObject("Grid Objects");
-        gridObjects.transform.parent = rightSide.transform;
-
         for (int i = 0; i < 5; i++)
         {
             placementPositions.Add(new List<UIObject>());
             for (int j = 0; j < 4; j++)
             {
                 GameObject shipPart = new GameObject();
-                shipPart.transform.parent = gridObjects.transform;
+                shipPart.transform.parent = uiGridObjects.transform;
 
                 Vector2 startingPos = new Vector2(1, 4);
                 shipPart.transform.position = new Vector2(startingPos.x + (j * 2), startingPos.y - (i * 2));
@@ -105,6 +104,10 @@ public class BoatBuild : MonoBehaviour
         contents.SetActive(true);
 
         SetupBuildGrid();
+        BoatController bc = BoatController.instance;
+        bc.transform.position = boatPosition;
+        bc.transform.localScale = Vector3.one * scale;
+        bc.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         uiSelector = Instantiate(uiSelectorPrefab);
         uiSelector.GetComponent<UISelector>().Setup(tileSelectionStart, Vector2.one);
@@ -115,6 +118,9 @@ public class BoatBuild : MonoBehaviour
         contents.SetActive(false);
         placementPositions.Clear();
         Destroy(uiSelector);
-        Destroy(gridObjects);
+        for (int i = 0; i < uiGridObjects.transform.childCount; i++)
+        {
+            Destroy(uiGridObjects.transform.GetChild(i).gameObject);
+        }
     }
 }
