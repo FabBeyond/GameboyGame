@@ -6,6 +6,8 @@ public class PlayerData : MonoBehaviour
 {
     public static PlayerData Instance;
     public List<GameObject> shipPrefabs = new List<GameObject>();
+    public List<ShipPartBase> shipParts = new List<ShipPartBase>();
+    public float deadzone = 0.5f;
 
     private void Start()
     {
@@ -33,6 +35,4 @@ public class PlayerData : MonoBehaviour
             }
         }
     }
-
-    public List<ShipPartBase> shipParts = new List<ShipPartBase>();
 }

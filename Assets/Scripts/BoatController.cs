@@ -19,8 +19,8 @@ public class BoatController : MonoBehaviour
 
     private void Update()
     {
-        Vector2 movementInput = input.Player.Movement.ReadValue<Vector2>().normalized;
-        movementInput = ControlUtils.SnapToDir(movementInput, 8) * speed * Time.deltaTime;
+        Vector2 movementInput = input.Player.Movement.ReadValue<Vector2>();
+        movementInput = ControlUtils.SnapToDir(ControlUtils.DeadzoneCheck(movementInput), 8).normalized * speed * Time.deltaTime;
         transform.position += new Vector3(movementInput.x, movementInput.y, 0);
     }
 }

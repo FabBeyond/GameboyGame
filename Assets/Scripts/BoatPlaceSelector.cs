@@ -10,12 +10,15 @@ public class BoatPlaceSelector : MonoBehaviour
     }
     private void Update()
     {
-        Vector2 cursorMovement = ControlUtils.SnapToDir(input.Player.Movement.ReadValue<Vector2>(), 4);
+        Vector2 cursorMovement = ControlUtils.DeadzoneCheck(input.Player.Movement.ReadValue<Vector2>());
+        cursorMovement = ControlUtils.SnapToDir(cursorMovement, 4);
         if (cursorMovement == Vector2.zero)
         {
             resetInput = true;
             return;
         }
+
+        cursorMovement = ControlUtils.DeadzoneCheck(cursorMovement);
 
         if (resetInput)
         {
