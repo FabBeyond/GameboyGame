@@ -4,11 +4,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public PlayerData pd;
+    public UIObject smh;
     private void Start()
     {
         instance = this;
         pd = PlayerData.Instance;
         SetupBoat();
+        GameObject.FindFirstObjectByType<UISelector>().Setup(smh);
     }
     void SetupBoat()
     {
