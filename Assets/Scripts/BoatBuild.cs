@@ -37,6 +37,13 @@ public class BoatBuild : MonoBehaviour
 
             GameManager.instance.SwitchBoatBuild();
         }
+        else if (currentMode == "tilePlacement")
+        {
+            if (!BoatController.instance.input.UI.Back.WasPressedThisFrame()) return;
+
+            currentMode = "tileSelect";
+            uiSelector.GetComponent<UISelector>().Setup(tileSelectionStart, Vector2.one);
+        }
     }
 
     public void SelectTile(string id)
