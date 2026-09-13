@@ -302,7 +302,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5eea09770869c4cae5f7d65dbdcbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIObject
-  neighbours: []
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &113963468
 SpriteRenderer:
   serializedVersion: 2
@@ -589,7 +596,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5eea09770869c4cae5f7d65dbdcbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIObject
-  neighbours: []
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &282452017
 SpriteRenderer:
   serializedVersion: 2
@@ -694,7 +708,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5eea09770869c4cae5f7d65dbdcbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIObject
-  neighbours: []
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 113963467}
+  - {fileID: 0}
+  - {fileID: 724334799}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &348597998
 SpriteRenderer:
   serializedVersion: 2
@@ -1064,6 +1085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   pd: {fileID: 0}
+  smh: {fileID: 724334799}
 --- !u!1 &724334797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1136,9 @@ MonoBehaviour:
   - {fileID: 348597997}
   - {fileID: 1180342461}
   - {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &724334800
 SpriteRenderer:
   serializedVersion: 2
@@ -1258,7 +1283,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5eea09770869c4cae5f7d65dbdcbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIObject
-  neighbours: []
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &1128069749
 SpriteRenderer:
   serializedVersion: 2
@@ -1363,7 +1395,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5eea09770869c4cae5f7d65dbdcbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIObject
-  neighbours: []
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &1180342462
 SpriteRenderer:
   serializedVersion: 2
@@ -1482,6 +1521,14 @@ PrefabInstance:
     - target: {fileID: 506113867156107679, guid: 175a099c198ce1048aef9944c2209a86, type: 3}
       propertyPath: m_Name
       value: Selector
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742779254233654060, guid: 175a099c198ce1048aef9944c2209a86, type: 3}
+      propertyPath: m_Color.a
+      value: 0.50980395
+      objectReference: {fileID: 0}
+    - target: {fileID: 1742779254233654060, guid: 175a099c198ce1048aef9944c2209a86, type: 3}
+      propertyPath: m_SortingOrder
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 2269669021622280053, guid: 175a099c198ce1048aef9944c2209a86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1693,7 +1740,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5eea09770869c4cae5f7d65dbdcbef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIObject
-  neighbours: []
+  neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  onClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &1664401663
 SpriteRenderer:
   serializedVersion: 2

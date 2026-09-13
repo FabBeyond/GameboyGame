@@ -20,6 +20,8 @@ public class UISelector : MonoBehaviour
         else if (input.UI.Right.WasPressedThisFrame()) MoveSelection(selection.neighbours[1]);
         else if (input.UI.Down.WasPressedThisFrame()) MoveSelection(selection.neighbours[2]);
         else if (input.UI.Left.WasPressedThisFrame()) MoveSelection(selection.neighbours[3]);
+
+        if (input.UI.Click.WasPressedThisFrame()) selection.onClick.Invoke();
     }
     public void Setup(UIObject startSelection)
     {
