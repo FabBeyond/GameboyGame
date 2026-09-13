@@ -7,6 +7,14 @@ public class Main_Enemy : MonoBehaviour
     public float maxHp = 5;
     private float hp = 0;
 
+    [Header("Knockback")]
+    private bool isKnocbacked = false;
+    private Vector3 startPos = Vector3.zero;
+    private Vector3 targetPos = Vector3.zero;
+    private Vector2 kbDir = Vector2.zero;
+    private float kbSpeed = 0;
+
+
     Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,11 +22,14 @@ public class Main_Enemy : MonoBehaviour
     {
         hp = maxHp;
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        print(Vector3.Distance(transform.position, targetPos) > 0);
+        KnockChecks();
         if(hp < 1)
         {
             Death();
@@ -31,19 +42,31 @@ public class Main_Enemy : MonoBehaviour
         print("ouchi bouchi");
     }
 
-    public IEnumerator Knockback(Vector3 dir, float distance, float speed)
+    public void AddKnockback(Vector3 dir, float distance, float speed) 
     {
-        Vector3 startPos = transform.position;
-        Vector3 targetPos = startPos + dir.normalized * distance;
+        isKnocbacked = true;
+        startPos = transform.position; 
+        targetPos = startPos + dir.normalized * distance;
+        kbDir = dir;
+        kbSpeed = speed;
 
-        while (Vector3.Distance(transform.position, targetPos) > 1)
+        rb.linearVelocity = Vector3.zero; 
+    }
+
+    public void KnockChecks()
+    {
+        if(isKnocbacked)
         {
-            rb.linearVelocity = dir.normalized * speed;
-
-            yield return null;
+            if (Vector3.Distance(transform.position, targetPos) >= 1)
+            {
+                rb.linearVelocity = (targetPos - transform.position).normalized * kbSpeed;
+            }
+            else
+            {
+                rb.linearVelocity = Vector2.zero;
+                isKnocbacked = false;
+            }
         }
-
-        rb.linearVelocity = Vector3.zero;
     }
 
     public void Death()

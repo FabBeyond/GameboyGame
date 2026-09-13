@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Pickup : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class Pickup : MonoBehaviour
     {
         Checks();
         PickupItem();
+        UseItem();
     }
 
     public void Checks()
@@ -58,8 +60,18 @@ public class Pickup : MonoBehaviour
         {
             if (canPickup && input.Player.B.WasPerformedThisFrame())
             {
-                item.GetComponent<Essential_Items>().itemFunction();
+                curAction = item.GetComponent<Essential_Items>().itemFunction;
+                Destroy(item.gameObject);
             }
         }    
+    }
+
+    public void UseItem()
+    {
+            if (!canPickup && input.Player.B.WasPerformedThisFrame())
+            {
+                curAction();
+                curAction = null;
+            }
     }
 }
