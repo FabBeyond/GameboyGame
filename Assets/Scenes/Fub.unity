@@ -736,6 +736,8 @@ MonoBehaviour:
     prefab: {fileID: 6572454212955033558, guid: b64180a63b0103048b20f500e431f1ac, type: 3}
   - tileId: 98
     prefab: {fileID: 6572454212955033558, guid: 41d937609f79e4549ad8a7d7f9e3c050, type: 3}
+  - tileId: 99
+    prefab: {fileID: 6572454212955033558, guid: 1567320dd6d336344a66025d1ffa9620, type: 3}
   shipParts: []
   deadzone: 0.15
   boatCanMove: 1
