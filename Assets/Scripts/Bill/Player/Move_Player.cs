@@ -39,6 +39,7 @@ public class Move_Player : MonoBehaviour
     {
         Checks();
         Move();
+
     }
 
     public void Checks()

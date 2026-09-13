@@ -1,13 +1,15 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
-public class Bottle_Proj : MonoBehaviour
+public class proj : MonoBehaviour
 {
 
-    public float throwRange = 0;
+    public float shootRange = 0;
+    public float shootSpeed = 0;
+    public float rotSpeed = 0;
     public float hitDmg = 0;
     public float kbSpeed = 0;
     public float kbDis = 0;
-    public float throwSpeed = 0;
     private Vector3 goalPos = new Vector3(100, 100, 100);
 
     Rigidbody2D rb;
@@ -15,7 +17,7 @@ public class Bottle_Proj : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        goalPos = transform.position + (new Vector3(Move_Player.lastInput.x, Move_Player.lastInput.y, 0) * throwRange);
+        goalPos = transform.position + (new Vector3(Move_Player.lastInput.x, Move_Player.lastInput.y, 0) * shootRange);
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -24,9 +26,12 @@ public class Bottle_Proj : MonoBehaviour
     {
         if(Vector3.Distance(transform.position, goalPos) < 1)
         {
+            print("adsda");
             Destroy(gameObject);
         }
-        rb.linearVelocity = Move_Player.lastInput.normalized * throwSpeed;
+        rb.linearVelocity = Move_Player.lastInput.normalized * shootSpeed;
+
+        transform.Rotate(0, 0, rotSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

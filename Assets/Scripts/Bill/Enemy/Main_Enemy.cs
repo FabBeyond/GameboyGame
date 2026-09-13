@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using Packages;
+using Pathfinding;
 
 public class Main_Enemy : MonoBehaviour
 {
@@ -14,7 +16,12 @@ public class Main_Enemy : MonoBehaviour
     private Vector2 kbDir = Vector2.zero;
     private float kbSpeed = 0;
 
+    [Header("Movement")]
+    public float moveSpeed = 6;
+    public float runSpeed = 9;
+    private float speed = 0;
 
+    AIPath aiPath;
     Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,18 +29,21 @@ public class Main_Enemy : MonoBehaviour
     {
         hp = maxHp;
         rb = GetComponent<Rigidbody2D>();
-
+        aiPath = GetComponent<AIPath>();
+        speed = moveSpeed;
+        aiPath.maxSpeed = speed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(Vector3.Distance(transform.position, targetPos) > 0);
         KnockChecks();
         if(hp < 1)
         {
             Death();
         }
+            aiPath.canMove = !isKnocbacked;
+
     }
 
     public void TakeDmg(float dmg)
