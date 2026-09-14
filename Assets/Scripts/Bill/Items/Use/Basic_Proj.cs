@@ -19,6 +19,7 @@ public class proj : MonoBehaviour
     {
         goalPos = transform.position + (new Vector3(Move_Player.lastInput.x, Move_Player.lastInput.y, 0) * shootRange);
         rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = ControlUtils.SnapToDir(Move_Player.lastInput.normalized, 4) * shootSpeed;
     }
 
     // Update is called once per frame
@@ -29,7 +30,6 @@ public class proj : MonoBehaviour
             print("adsda");
             Destroy(gameObject);
         }
-        rb.linearVelocity = Move_Player.lastInput.normalized * shootSpeed;
 
         transform.Rotate(0, 0, rotSpeed * Time.deltaTime);
     }

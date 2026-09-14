@@ -13,11 +13,10 @@ public class Attack_Player : MonoBehaviour
     public LayerMask enemyLayer;
 
     private bool isAttacking = false;
-    private bool canAtk = true;
+    static public bool canAtk = true;
     private float cDTimer = 0f;
     private float windupTimer = 0f;
 
-    Move_Player move;
     Rigidbody2D rb;
     InputActions input;
 
@@ -35,7 +34,6 @@ public class Attack_Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        move = GetComponent<Move_Player>(); 
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -48,7 +46,7 @@ public class Attack_Player : MonoBehaviour
 
     public void Checks()
     {
-        atkPivot.transform.right = Move_Player.lastInput;
+        atkPivot.transform.right = ControlUtils.SnapToDir(Move_Player.lastInput, 4);
         atkPivot.transform.position = transform.position;
     }
 
@@ -62,7 +60,7 @@ public class Attack_Player : MonoBehaviour
         if (isAttacking)
         {
             canAtk = false;
-            move.canMove = false;
+            Move_Player.canMove = false;
             rb.linearVelocity = Vector2.zero;
             if(windupTimer > windupSpeed)
             {
@@ -76,7 +74,7 @@ public class Attack_Player : MonoBehaviour
                     }
                 }
                 isAttacking = false;
-                move.canMove = true;
+                Move_Player.canMove = true;
                 canAtk = true;
                 cDTimer = 0f;
             }

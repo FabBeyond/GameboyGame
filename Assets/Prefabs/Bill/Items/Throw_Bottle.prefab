@@ -179,9 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 238c1b6805df3934fb60cda487c3f977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bottle_Proj
-  shootRange: 15
-  shootSpeed: 20
+  shootRange: 18
+  shootSpeed: 25
   rotSpeed: 400
   hitDmg: 2
-  kbSpeed: 20
-  kbDis: 5
+  kbSpeed: 28
+  kbDis: 7

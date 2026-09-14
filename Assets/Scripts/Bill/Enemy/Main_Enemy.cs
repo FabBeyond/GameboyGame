@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Packages;
 using Pathfinding;
+using JetBrains.Annotations;
 
 public class Main_Enemy : MonoBehaviour
 {
@@ -10,11 +11,13 @@ public class Main_Enemy : MonoBehaviour
     private float hp = 0;
 
     [Header("Knockback")]
+    public float unstuckTime = 0.5f;
     private bool isKnocbacked = false;
     private Vector3 startPos = Vector3.zero;
     private Vector3 targetPos = Vector3.zero;
     private Vector2 kbDir = Vector2.zero;
     private float kbSpeed = 0;
+    private float knockbackedtimer = 0;
 
     [Header("Movement")]
     public float moveSpeed = 6;
@@ -43,7 +46,7 @@ public class Main_Enemy : MonoBehaviour
             Death();
         }
             aiPath.canMove = !isKnocbacked;
-
+        ControlUtils.SnapToDir(rb.linearVelocity, 8);
     }
 
     public void TakeDmg(float dmg)
@@ -67,6 +70,16 @@ public class Main_Enemy : MonoBehaviour
     {
         if(isKnocbacked)
         {
+            if(knockbackedtimer > unstuckTime)
+            {
+                isKnocbacked = false;
+                knockbackedtimer = 0;
+            }
+            else
+            {
+                knockbackedtimer += Time.deltaTime;
+            }
+
             if (Vector3.Distance(transform.position, targetPos) >= 1)
             {
                 rb.linearVelocity = (targetPos - transform.position).normalized * kbSpeed;
@@ -83,4 +96,18 @@ public class Main_Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    Vector2 Crunch8Dir(Vector2 vec)
+    {
+        if (vec == Vector2.zero)
+        {
+            return Vector2.zero; 
+        }
+
+        float angle = Mathf.Atan2(vec.y, vec.x);
+        float crunchAngle = Mathf.Round(angle / (Mathf.PI / 4)) * (Mathf.PI / 4);
+
+        return new Vector2(Mathf.Cos(crunchAngle),Mathf.Sin(crunchAngle)) * vec.magnitude;
+    }
+
 }
