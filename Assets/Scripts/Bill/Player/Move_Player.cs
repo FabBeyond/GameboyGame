@@ -7,7 +7,7 @@ public class Move_Player : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed = 5;
-    public bool canMove = true;
+    static public bool canMove = true;
     private float speed = 0;
     static public Vector2 inputVector = Vector2.zero;
     static public Vector2 lastInput = Vector2.zero;
@@ -39,6 +39,7 @@ public class Move_Player : MonoBehaviour
     {
         Checks();
         Move();
+        ControlUtils.SnapToDir(rb.linearVelocity, 8);
     }
 
     public void Checks()
