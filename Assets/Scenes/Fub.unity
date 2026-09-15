@@ -743,6 +743,8 @@ MonoBehaviour:
   boatCanMove: 1
   boatBuildMode: 0
   boatTiles: -----aa--bb--aa-----
+  resistance: 0
+  weight: 0
 --- !u!4 &670530923
 Transform:
   m_ObjectHideFlags: 0
@@ -1314,6 +1316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoatController
   speed: 4
+  minSpeed: 0.5
 --- !u!61 &1419662221
 BoxCollider2D:
   m_ObjectHideFlags: 0

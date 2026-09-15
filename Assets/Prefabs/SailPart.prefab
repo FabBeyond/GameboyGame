@@ -108,5 +108,5 @@ MonoBehaviour:
   position: {x: 0, y: 0}
   tileSprite: {fileID: 0}
   active: 0
-  resistance: 0
-  weight: 0
+  resistance: 2
+  weight: -10

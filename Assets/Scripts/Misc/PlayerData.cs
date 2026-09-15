@@ -20,6 +20,8 @@ public class PlayerData : MonoBehaviour
     public bool boatCanMove = true;
     public bool boatBuildMode = false;
     public string boatTiles; // starting config -----bb--cc--bb-----
+    public float resistance;
+    public float weight;
 
     private void Awake()
     {

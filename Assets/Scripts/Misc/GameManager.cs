@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,17 +20,21 @@ public class GameManager : MonoBehaviour
 
             if (pd.boatTiles[i] == '-') continue;
 
-            SetTile(pd.boatTiles[i], x, y);
+            SetTile(pd.boatTiles[i], x, y, 1, true);
         }
     }
-    public void SetTile(char id, int x, int y, float scale = 1)
+    public void SetTile(char id, int x, int y, float scale = 1, bool setup = false)
     {
         int idx = x + y * 4;
-        if (pd.boatTiles[idx] != '-')
+
+        if (!setup && pd.boatTiles[idx] != '-')
         {
+            pd.weight -= pd.shipParts[idx].weight;
+            pd.resistance -= pd.shipParts[idx].resistance;
+
             pd.SetBoatTile(idx, '-');
 
-            Destroy(pd.shipParts[idx]?.gameObject);
+            Destroy(pd.shipParts[idx].gameObject);
         }
 
         GameObject tile = pd.GetTile(id);
@@ -42,6 +47,10 @@ public class GameManager : MonoBehaviour
 
         pd.shipParts[idx] = shipPartBase;
         pd.SetBoatTile(idx, id);
+
+        pd.weight += shipPartBase.weight;
+        pd.resistance += shipPartBase.resistance;
+
     }
     public void SwitchBoatBuild()
     {
