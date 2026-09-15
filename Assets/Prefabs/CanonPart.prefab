@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367aef6ad1ff7154384b96877908d197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Canon
+  canonBallPrefab: {fileID: 7513924116333909195, guid: 34065e4469abafc41984eb9019f1a01b, type: 3}

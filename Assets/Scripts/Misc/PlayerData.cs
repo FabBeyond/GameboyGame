@@ -22,6 +22,7 @@ public class PlayerData : MonoBehaviour
     public string boatTiles; // starting config -----bb--cc--bb-----
     public float resistance;
     public float weight;
+    public bool canShoot = true;
 
     private void Awake()
     {
