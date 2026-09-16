@@ -69,8 +69,15 @@ public class Attack_Player : MonoBehaviour
                 {
                     for (int i = 0; i < targets.Length; i++)
                     {
-                        targets[i].GetComponent<Main_Enemy>().TakeDmg(atkDamage);
-                        targets[i].GetComponent<Main_Enemy>().AddKnockback((targets[i].transform.position - transform.position).normalized, kbDistance, kbSpeed);
+                        if (targets[i].CompareTag("Enemy"))
+                        {
+                            targets[i].GetComponent<Main_Enemy>().TakeDmg(atkDamage);
+                            targets[i].GetComponent<Main_Enemy>().AddKnockback((targets[i].transform.position - transform.position).normalized, kbDistance, kbSpeed);
+                        }
+                        else if (targets[i].CompareTag("ExBarrel"))
+                        {
+                            StartCoroutine(targets[i].GetComponent<Boom_Barrel>().Explode());
+                        }
                     }
                 }
                 isAttacking = false;
