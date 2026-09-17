@@ -4,7 +4,7 @@ Hello this is the Github repository for our gameboy pirate game.
 You can find the game here: https://fabbeyond.itch.io/
 Fabs Personal Website: https://www.fabbeyond.dev/
 
-##Credits
+## Credits
 Most of the Code and hard work: Fabbeyond and Philer
 Gamedesign and Assets: Cadna , Infinity and Philer
 Level Design: goldenphrogg
