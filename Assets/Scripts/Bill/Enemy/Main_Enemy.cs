@@ -12,12 +12,14 @@ public class Main_Enemy : MonoBehaviour
 
     [Header("Knockback")]
     public float unstuckTime = 0.5f;
-    private bool isKnocbacked = false;
     private Vector3 startPos = Vector3.zero;
     private Vector3 targetPos = Vector3.zero;
     private Vector2 kbDir = Vector2.zero;
     private float kbSpeed = 0;
     private float knockbackedtimer = 0;
+
+    [HideInInspector]
+    public bool isKnocbacked = false;
 
     [Header("Movement")]
     public float moveSpeed = 6;
@@ -25,6 +27,8 @@ public class Main_Enemy : MonoBehaviour
     private float speed = 0;
 
     AIPath aiPath;
+    AIDestinationSetter desSetter;
+    GameObject player;
     Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,9 +36,12 @@ public class Main_Enemy : MonoBehaviour
     {
         hp = maxHp;
         rb = GetComponent<Rigidbody2D>();
+        desSetter = GetComponent<AIDestinationSetter>();
         aiPath = GetComponent<AIPath>();
         speed = moveSpeed;
         aiPath.maxSpeed = speed;
+        player = GameObject.FindGameObjectWithTag("Player");
+        desSetter.target = player.transform;
     }
 
     // Update is called once per frame
@@ -52,11 +59,11 @@ public class Main_Enemy : MonoBehaviour
     public void TakeDmg(float dmg)
     {
         hp -= dmg;
-        print("ouchi bouchi");
     }
 
     public void AddKnockback(Vector3 dir, float distance, float speed) 
     {
+        aiPath.canMove = false;
         isKnocbacked = true;
         startPos = transform.position; 
         targetPos = startPos + dir.normalized * distance;

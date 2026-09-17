@@ -1,12 +1,18 @@
 using UnityEditor.Rendering.Canvas.ShaderGraph;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class Main_Player : MonoBehaviour
 {
     [Header("Health")]
-    public float maxHp = 5;
-    private float hp = 0;
+    public int maxHp = 5;
+    public GameObject Hearts1;
+    public GameObject Hearts2;
+    public GameObject Hearts3;
+    private int hp = 0;
 
     [Header("Gold")]
     public TextMeshProUGUI goldText;
@@ -14,6 +20,7 @@ public class Main_Player : MonoBehaviour
     static public int gold = 0;
 
     [Header("Knockback")]
+    public float unstuckTime = 0.3f;
     static public bool isPlayerKB = false;
     private Vector3 startPos = Vector3.zero;
     private Vector3 targetPos = Vector3.zero;
@@ -27,6 +34,9 @@ public class Main_Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        hp = maxHp;
+        UpdateHP();
+        //Image uiHp = Instantiate(uiHearts, transform.position, Quaternion.identity, Canvas.transform);
     }
 
     // Update is called once per frame
@@ -34,6 +44,7 @@ public class Main_Player : MonoBehaviour
     {
         Checks();
         KnockChecks();
+        print(hp);
     }
 
     public void Checks()
@@ -44,14 +55,14 @@ public class Main_Player : MonoBehaviour
         }
     }
 
-    public void TakeDmg(float dmg)
+    public void TakeDmg(int dmg)
     {
         hp -= dmg;
+        UpdateHP();
     }
 
     public void AddKnockback(Vector3 dir, float distance, float speed)
     {
-        print("asas");
         isPlayerKB = true;
         Move_Player.canMove = false;
         Attack_Player.canAtk = false;
@@ -67,6 +78,18 @@ public class Main_Player : MonoBehaviour
     {
         if (isPlayerKB)
         {
+            if (knockbackedtimer > unstuckTime)
+            {
+                isPlayerKB = false;
+                Move_Player.canMove = true;
+                Attack_Player.canAtk = true;
+                knockbackedtimer = 0;
+            }
+            else
+            {
+                knockbackedtimer += Time.deltaTime;
+            }
+
             if (Vector3.Distance(transform.position, targetPos) >= 1)
             {
                 rb.linearVelocity = (targetPos - transform.position).normalized * kbSpeed;
@@ -78,6 +101,25 @@ public class Main_Player : MonoBehaviour
                 Move_Player.canMove = true;
                 Attack_Player.canAtk = true;
             }
+        }
+    }
+
+    public void UpdateHP()
+    {
+        if(hp == 1)
+        {
+            Hearts2.SetActive(false);
+            Hearts3.SetActive(false);
+        }
+        else if(hp == 2)
+        {
+            Hearts3.SetActive(false);
+            Hearts2.SetActive(true);
+        }
+        else if(hp == 3)
+        {
+            Hearts2.SetActive(true);
+            Hearts3.SetActive(true);
         }
     }
 }

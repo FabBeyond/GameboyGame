@@ -7,6 +7,9 @@ TagManager:
   - Wall
   - Enemy
   - Building
+  - UIHeart
+  - Anchors
+  - ExBarrel
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - Item
   - Walls
   - Ground
-  - 
+  - Barrels
   - 
   - 
   - 

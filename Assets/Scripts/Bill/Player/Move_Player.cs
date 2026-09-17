@@ -11,6 +11,7 @@ public class Move_Player : MonoBehaviour
     private float speed = 0;
     static public Vector2 inputVector = Vector2.zero;
     static public Vector2 lastInput = Vector2.zero;
+    static public Vector3 playerPos = Vector2.zero;
 
 
     InputActions input;
@@ -40,6 +41,7 @@ public class Move_Player : MonoBehaviour
         Checks();
         Move();
         ControlUtils.SnapToDir(rb.linearVelocity, 8);
+        playerPos = transform.position;
     }
 
     public void Checks()
