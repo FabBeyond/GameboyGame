@@ -9,9 +9,12 @@ public class ShipPartBase : MonoBehaviour
     public bool active;
     public float resistance;
     public float weight;
+    public bool isEnemy;
 
     private void Start()
     {
+        if (isEnemy) return;
+
         sr = GetComponent<SpriteRenderer>();
         Vector2 basePosition = new Vector2(-1.5f, 2);
         transform.localPosition = new Vector3(basePosition.x+position.x, basePosition.y-position.y, 0);

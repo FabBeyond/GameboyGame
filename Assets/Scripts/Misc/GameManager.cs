@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -69,5 +70,29 @@ public class GameManager : MonoBehaviour
             BoatBuild.instance.EndBoatBuild();
             BoatController.instance.ResetFromBuild();
         }
+    }
+
+    public Dictionary<string, float> CalculateShipValues(GameObject parent)
+    {
+        float minSpeed = 0.5f;
+        float maxSpeed = 5f;
+
+        float weight = 0;
+        float resistance = 0;
+
+        foreach (ShipPartBase part in parent.GetComponentsInChildren<ShipPartBase>())
+        {
+            weight += part.weight;
+            resistance += part.resistance;
+        }
+
+        float calcedSpeed = minSpeed + (maxSpeed - minSpeed) * (1 - weight / 200);
+
+        return new Dictionary<string, float>
+        {
+            { "weight", weight },
+            { "resistance", resistance },
+            { "speed", calcedSpeed }
+        };
     }
 }

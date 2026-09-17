@@ -14,8 +14,7 @@ public class Canon : MonoBehaviour
 
         if (input.Player.A.WasPressedThisFrame())
         {
-            GameObject canonBall = Instantiate(canonBallPrefab, transform.position, Quaternion.identity);
-            canonBall.GetComponent<CanonBall>().direction = transform.up;
+            GameObject canonBall = Instantiate(canonBallPrefab, transform.position, transform.rotation);
         }
     }
 }

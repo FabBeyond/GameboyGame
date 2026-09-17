@@ -11,7 +11,10 @@ public class ControlUtils
         angle = Mathf.Round(angle/step) * step;
 
         float rad = angle * Mathf.Deg2Rad;
-        return new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+        Vector2 dir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+        if (dir.x < 0.1f && dir.x > -0.1f) dir.x = 0;
+        if (dir.y < 0.1f && dir.y > -0.1f) dir.y = 0;
+        return dir;
     }
     public static Vector2 DeadzoneCheck(Vector2 input)
     {

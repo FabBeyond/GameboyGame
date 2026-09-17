@@ -659,7 +659,7 @@ MonoBehaviour:
   m_RefResolutionX: 160
   m_RefResolutionY: 144
   m_CropFrame: 0
-  m_GridSnapping: 1
+  m_GridSnapping: 2
   m_FilterMode: 0
   m_UpscaleRT: 0
   m_PixelSnapping: 0
@@ -742,7 +742,7 @@ MonoBehaviour:
   deadzone: 0.15
   boatCanMove: 1
   boatBuildMode: 0
-  boatTiles: -----aa--bb--aa-----
+  boatTiles: -cc--aa--bb--aa-----
   resistance: 0
   weight: 0
   canShoot: 1
@@ -1270,6 +1270,28 @@ MonoBehaviour:
   rightSide: {fileID: 106576266}
   uiGridObjects: {fileID: 876418707}
   selectedTile: 
+--- !u!1 &1238731925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4271342597273675193, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+  m_PrefabInstance: {fileID: 4540833771988523366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1238731927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238731925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d8235400d0a1d41b0dae5195e2ad11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShipEnemy
+  seeRadius: 20
+  speed: 0
+  resistance: 0
+  weight: 0
+  player: {fileID: 0}
 --- !u!1 &1419662218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,7 +1306,7 @@ GameObject:
   - component: {fileID: 1419662222}
   m_Layer: 0
   m_Name: Boat
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1318,6 +1340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoatController
   speed: 4
   minSpeed: 0.5
+  rotateSpeed: 0
 --- !u!61 &1419662221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1482,6 +1505,70 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1001 &4540833771988523366
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.04799
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.123760015
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3289569155170659148, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271342597273675193, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_Name
+      value: EnemyShip
+      objectReference: {fileID: 0}
+    - target: {fileID: 4271342597273675193, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4271342597273675193, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1238731927}
+  m_SourcePrefab: {fileID: 100100000, guid: ad3075d272bbafd44a01a312eefc09a1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1491,3 +1578,4 @@ SceneRoots:
   - {fileID: 670530923}
   - {fileID: 99596450}
   - {fileID: 1207526028}
+  - {fileID: 4540833771988523366}
