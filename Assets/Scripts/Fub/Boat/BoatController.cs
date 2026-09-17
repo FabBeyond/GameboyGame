@@ -9,9 +9,11 @@ public class BoatController : MonoBehaviour
     public float minSpeed;
     Transform lastBoatSpawn;
     public float rotateSpeed;
+    public Rigidbody2D rb;
 
     private void OnEnable()
     {
+        rb = GetComponent<Rigidbody2D>();
         instance = this;
         input = new InputActions();
         input.Enable();
@@ -32,10 +34,16 @@ public class BoatController : MonoBehaviour
         Vector2 move = new Vector3(0, movementInputSnapped.y, 0) * calcedSpeed * Time.deltaTime;
         transform.Translate(move);
 
+
         float angle = Mathf.Atan2(movementInputSnapped.x, movementInputSnapped.y) * Mathf.Rad2Deg;
         if (angle == 180) angle = 0;
 
         transform.Rotate(0, 0, -angle * Time.deltaTime * rotateSpeed);
+    }
+
+    public void Booster(GameObject booster)
+    {
+        rb.AddForceAtPosition(booster.transform.right, booster.transform.position, ForceMode2D.Impulse);
     }
 
     public void ResetFromBuild()

@@ -738,11 +738,13 @@ MonoBehaviour:
     prefab: {fileID: 6572454212955033558, guid: 41d937609f79e4549ad8a7d7f9e3c050, type: 3}
   - tileId: 99
     prefab: {fileID: 6572454212955033558, guid: 1567320dd6d336344a66025d1ffa9620, type: 3}
+  - tileId: 100
+    prefab: {fileID: 6572454212955033558, guid: fb8ceed9efdc62044be6e41100e21267, type: 3}
   shipParts: []
   deadzone: 0.15
   boatCanMove: 1
   boatBuildMode: 0
-  boatTiles: -cc--aa--bb--aa-----
+  boatTiles: -cc--aa--bb--aa--dd-
   resistance: 0
   weight: 0
   canShoot: 1
@@ -1340,7 +1342,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BoatController
   speed: 4
   minSpeed: 0.5
-  rotateSpeed: 0
+  rotateSpeed: 2
+  rb: {fileID: 0}
 --- !u!61 &1419662221
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1400,8 +1403,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_LinearDamping: 1
+  m_AngularDamping: 10
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -1413,7 +1416,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 3
 --- !u!1 &1637970406
 GameObject:
   m_ObjectHideFlags: 0

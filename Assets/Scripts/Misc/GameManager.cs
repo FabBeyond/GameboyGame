@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         if (!pd.boatBuildMode)
         {
             pd.boatCanMove = false;
+            pd.canShoot = false;
             pd.boatBuildMode = true;
 
             BoatBuild.instance.StartBoatBuild();
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
         else
         {
             pd.boatCanMove = true;
+            pd.canShoot = true;
             pd.boatBuildMode = false;
 
             BoatBuild.instance.EndBoatBuild();
